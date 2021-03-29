@@ -52,6 +52,7 @@ function populate() {
        var incountryValue = incountryhtml.property("value")
        var inshapeValue = inshapehtml.property("value")
 
+
        inputarray = {
          datetime:  indateValue,
          city: incityValue,
@@ -79,9 +80,34 @@ function runEnter() {
     populate();
     //console.log(inputValue);
     //console.log(tableData);
+    console.log(inputarray);
 
     Object.entries(inputarray).forEach(([key, value]) => {
-        filteredData = tableData.filter(key === value)});
+      var tempData = tableData;
+      if (value !== ''){
+        console.log("filtering data", key);
+        filteredData = tempData.filter(ufo => ufo.key === value);
+        tempData = filteredData;
+        /*if (key == datetime){
+          filteredData = filteredData.filter(ufo => ufo.datetime === value);
+        }
+        else if (key.text === "state"){
+          filteredData = filteredData.filter(ufo => ufo.state === value);
+          console.log("hit state", key, value);
+        }
+        else if (key == 'country'){
+          filteredData = filteredData.filter(ufo => ufo.country === value);
+        }
+        else if (key == shape){
+          filteredData = filteredData.filter(ufo => ufo.shape === value);
+        }
+        else if (key == city){
+          filteredData = filteredData.filter(ufo => ufo.city === value);
+        }
+        */
+      }
+    });
+        //filteredData = tableData.filter(key === value)});
     
     //var filteredData = tableData.filter(ufo => ufo.datetime === inputValue);
     console.log(filteredData);
