@@ -13,15 +13,6 @@ var form = d3.select("#form");
 //Input values
 inputarray = {}
 
-// print full table
-//tableData.forEach((ufodata) => {
-//  var row = tbody.append("tr");
-//  Object.entries(ufodata).forEach(([key, value]) => {
-//    var cell = row.append("td");
-//    cell.text(value);
-//  });
-//}); 
-
 // Create event handlers 
 button.on("click", runEnter);
 form.on("submit",runEnter);
