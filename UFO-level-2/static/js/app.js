@@ -46,11 +46,11 @@ function populate() {
        var incountryhtml = d3.select("#country");
        var inshapehtml = d3.select("#shape");
        // Get the value property of the input element
-       var indateValue = indatehtml.property("value")
-       var incityValue = incityhtml.property("value")
-       var instateValue = instatehtml.property("value")
-       var incountryValue = incountryhtml.property("value")
-       var inshapeValue = inshapehtml.property("value")
+       var indateValue = indatehtml.property("value").toLowerCase();
+       var incityValue = incityhtml.property("value").toLowerCase();
+       var instateValue = instatehtml.property("value").toLowerCase();
+       var incountryValue = incountryhtml.property("value").toLowerCase();
+       var inshapeValue = inshapehtml.property("value").toLowerCase();
 
 
        inputarray = {
@@ -70,6 +70,7 @@ function populate() {
         shape: "unknown",
 */
 
+
 // Complete the event handler function for the form
 function runEnter() {
       
@@ -81,30 +82,12 @@ function runEnter() {
     //console.log(inputValue);
     //console.log(tableData);
     console.log(inputarray);
-
+    var tempData = tableData;
     Object.entries(inputarray).forEach(([key, value]) => {
-      var tempData = tableData;
       if (value !== ''){
         console.log("filtering data", key);
-        filteredData = tempData.filter(ufo => ufo.key === value);
+        filteredData = tempData.filter(ufo => ufo[key] == value);
         tempData = filteredData;
-        /*if (key == datetime){
-          filteredData = filteredData.filter(ufo => ufo.datetime === value);
-        }
-        else if (key.text === "state"){
-          filteredData = filteredData.filter(ufo => ufo.state === value);
-          console.log("hit state", key, value);
-        }
-        else if (key == 'country'){
-          filteredData = filteredData.filter(ufo => ufo.country === value);
-        }
-        else if (key == shape){
-          filteredData = filteredData.filter(ufo => ufo.shape === value);
-        }
-        else if (key == city){
-          filteredData = filteredData.filter(ufo => ufo.city === value);
-        }
-        */
       }
     });
         //filteredData = tableData.filter(key === value)});
